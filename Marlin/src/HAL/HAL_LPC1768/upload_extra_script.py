@@ -78,7 +78,10 @@ if build_type == 'upload' or build_type == 'traceback' or build_type == 'Not Set
         upload_disk = 'Disk not found'
         target_file_found = False
         target_drive_found = False
-        medias = os.listdir('/media')  #
+        try:
+          medias = os.listdir('/media')  # 
+        except:
+          medias = []
         for media in medias:
           drives = os.listdir('/media/' + media)  #
           if target_drive in drives and target_file_found == False:  # set upload if not found target file yet
